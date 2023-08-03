@@ -6,4 +6,5 @@ public class PoolObject : MonoBehaviour
 {
     public GameObject gameObject;
     public bool isActive;
+
 }

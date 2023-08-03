@@ -49,5 +49,26 @@ public class ObjectPooling
         return poolObject;
     }
 
+    public PoolObject GetObjectFromPool()
+    {
+        for (int i = 0; i < pool.Count; i++)
+        {
+            if (!pool[i].isActive)
+            {
+                pool[i].gameObject.SetActive(true);
+                pool[i].isActive = true;
+                return pool[i];
+            }
+            
+        }
+        // if active object is not found, create a new one and return
+        return CreateObject();
+    }
+
+    public void ReturnObjectToPool(PoolObject poolObject)
+    {
+        poolObject.gameObject.SetActive(false);
+        poolObject.isActive = false;
+    }
 
 }
